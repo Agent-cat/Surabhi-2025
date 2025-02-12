@@ -9,8 +9,6 @@ const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-
-
 export const register = async (req, res) => {
   try {
     const {
@@ -261,6 +259,76 @@ export const verifyOTP = async (req, res) => {
     otpStore.delete(email);
 
     res.status(200).json({ message: "Email verified successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const sendPasswordResetOTP = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const otp = generateOTP();
+    const expiryTime = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
+
+    // Store OTP with expiry
+    otpStore.set(`reset_${email}`, {
+      otp,
+      expiry: expiryTime
+    });
+
+    // Send OTP email
+    const emailSent = await sendOTPEmail(email, otp, "Password Reset");
+    if (!emailSent) {
+      throw new Error('Failed to send email. Please try again later.');
+    }
+
+    res.status(200).json({ message: "Password reset OTP sent successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { email, otp, newPassword } = req.body;
+
+    const storedOTPData = otpStore.get(`reset_${email}`);
+    if (!storedOTPData) {
+      return res.status(400).json({ error: "OTP not found or expired" });
+    }
+
+    if (Date.now() > storedOTPData.expiry) {
+      otpStore.delete(`reset_${email}`);
+      return res.status(400).json({ error: "OTP has expired" });
+    }
+
+    if (storedOTPData.otp !== otp) {
+      return res.status(400).json({ error: "Invalid OTP" });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Hash new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // Update password
+    user.password = hashedPassword;
+    await user.save();
+
+    // Clear OTP
+    otpStore.delete(`reset_${email}`);
+
+    res.status(200).json({ message: "Password reset successful" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

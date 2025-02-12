@@ -13,6 +13,7 @@ import RegisteredEvents from "../Components/RegisteredEvents";
 import AuthRoute from "../utils/AuthRoute";
 import { getUser } from "../utils/auth";
 import PleaseLogin from "../Components/PleaseLogin";
+import ForgotPassword from "../Components/ForgotPassword";
 
 const NRoutes = () => {
   const user = getUser();
@@ -60,6 +61,7 @@ const NRoutes = () => {
           </ProtectedRoute>
         }
       />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
     </Routes>
   );
 };

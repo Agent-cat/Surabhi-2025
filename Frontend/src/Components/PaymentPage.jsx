@@ -139,7 +139,7 @@ const PaymentPage = () => {
             className="w-64 h-64 mx-auto rounded-lg shadow-lg"
           />
           <p className="text-purple-300 text-center mt-4 font-medium">
-            Scan QR code to pay ₹500
+            Scan QR code to pay ₹310
           </p>
         </div>
 
@@ -149,17 +149,23 @@ const PaymentPage = () => {
               htmlFor="transactionId"
               className="block text-purple-300 mb-2 font-medium"
             >
-              Transaction ID
+              UTR ID
             </label>
             <input
               type="text"
               id="transactionId"
               value={transactionId}
-              onChange={(e) => setTransactionId(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.slice(0, 12);
+                setTransactionId(value);
+              }}
+              maxLength={12}
+              pattern=".{12,12}"
               className="w-full px-4 py-3 rounded-lg bg-black border border-purple-500/30 text-white focus:outline-none focus:border-purple-500 transition duration-200"
               required
               disabled={isLoading}
             />
+            <p className="text-sm text-purple-300 mt-1">UTR ID must be exactly 12 characters</p>
           </div>
 
           <div>

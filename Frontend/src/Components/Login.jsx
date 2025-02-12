@@ -124,14 +124,21 @@ const Login = () => {
                 required
               />
             </div>
+            <div className="flex justify-end">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-purple-300 hover:text-purple-200 transition-colors"
+              >
+                Forgot Password?
+              </Link>
+            </div>
             <button
               type="submit"
               disabled={!isVideoLoaded || isLoading}
-              className={`w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition-colors duration-300 ${
-                isLoading
+              className={`w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition-colors duration-300 ${isLoading
                   ? "opacity-50 cursor-not-allowed"
                   : ""
-              }`}
+                }`}
             >
               {isLoading ? "Logging in..." : "Login"}
             </button>

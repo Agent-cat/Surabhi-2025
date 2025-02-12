@@ -157,7 +157,7 @@ const Navbar = () => {
               <h1 className="text-2xl font-bold font-saint-carell text-white hover:text-gray-300 transition-colors">
                 SURABHI
               </h1>
-              <img src={kl} alt="logo" className="w-32 h-10" />
+              <img src={kl} alt="logo" className="w-32 hidden md:flex h-10" />
             </div>
 
           </div>

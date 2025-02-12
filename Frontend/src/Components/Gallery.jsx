@@ -1,9 +1,7 @@
 import React, { useState, useCallback, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import poster1 from "../assets/poster1.jpg"
-import poster2 from "../assets/poster1.jpg"
-import poster3 from "../assets/poster1.jpg"
+
 
 const Gallery = () => {
   const [selectedEvent, setSelectedEvent] = useState("Vastrashala");
@@ -25,7 +23,7 @@ const Gallery = () => {
       { image: "https://i.imghippo.com/files/pPfL5365T.jpg" },
       { image: "https://i.imghippo.com/files/gOHk2168Nc.jpg" },
       { image: "https://i.imghippo.com/files/pPfL5365T.jpg" },
-      
+
     ],
     Nritya: [
       { image: "https://i.imghippo.com/files/ex3195bc.jpg" },
@@ -43,12 +41,12 @@ const Gallery = () => {
       { image: "https://i.imghippo.com/files/YHAR8241Z.jpg" },
       { image: "https://i.imghippo.com/files/KfXn6335eQU.jpg" },
       { image: "https://i.imghippo.com/files/KfXn6335eQU.jpg" },
-      
 
-     
+
+
       { image: "https://i.imghippo.com/files/BVuY2188Lj.jpg" },
       { image: "https://i.imghippo.com/files/BVuY2188Lj.jpg" },
-      
+
     ],
     CineCarnival: [
       { image: "https://i.imghippo.com/files/vtIK7188pAI.jpg" },
@@ -64,9 +62,9 @@ const Gallery = () => {
       { image: "https://i.imghippo.com/files/Sb6106Oog.jpg" },
       { image: "https://i.imghippo.com/files/xeC4010Jyc.jpg" },
       { image: "https://i.imghippo.com/files/yvH4876OKA.jpg" },
-     { image: "https://i.imghippo.com/files/BfOb5980kns.jpg" } ,
-     { image: "https://i.imghippo.com/files/Xmod2075bDU.jpg" } ,
-      
+      { image: "https://i.imghippo.com/files/BfOb5980kns.jpg" },
+      { image: "https://i.imghippo.com/files/Xmod2075bDU.jpg" },
+
     ],
     Vastrashala: [
       { image: "https://i.imghippo.com/files/IQfu6477O.jpg" },
@@ -162,16 +160,15 @@ const Gallery = () => {
         >
           Gallery
         </motion.h1>
-        
+
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {Object.keys(events).map((eventName, index) => (
             <motion.button
               key={eventName}
               className={`px-6 py-3 rounded-full text-lg font-medium transition-all relative
-                ${
-                  selectedEvent === eventName
-                    ? "bg-purple-600 text-white shadow-lg shadow-purple-500/50"
-                    : "bg-purple-900/30 text-purple-300 hover:bg-purple-800/40"
+                ${selectedEvent === eventName
+                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/50"
+                  : "bg-purple-900/30 text-purple-300 hover:bg-purple-800/40"
                 }
                 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full 
                 before:border-2 before:border-purple-500 before:rounded-full before:opacity-0 

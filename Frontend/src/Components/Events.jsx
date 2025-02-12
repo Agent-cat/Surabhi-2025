@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import poster1 from "../assets/2025.jpg";
 import axios from "axios";
-import { IoLocationSharp } from "react-icons/io5";
-import { IoCalendarClear } from "react-icons/io5";
+
 import { useNavigate } from "react-router-dom";
 
 const Events = () => {
@@ -149,7 +148,7 @@ const Events = () => {
       setShowRegisterPopup(false);
       setShowSuccessPopup(true);
       setError(null);
-      
+
       // Update registration status
       setRegistrationStatus(prev => ({
         ...prev,
@@ -227,10 +226,9 @@ const Events = () => {
             onClick={handleRegistrationSubmit}
             disabled={!acceptedTerms}
             className={`flex-1 bg-purple-500 text-white px-6 py-2 rounded-md transition-all duration-300 
-              ${
-                !acceptedTerms
-                  ? "opacity-50 cursor-not-allowed"
-                  : "hover:bg-purple-600"
+              ${!acceptedTerms
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-purple-600"
               }`}
           >
             Confirm Registration
@@ -282,11 +280,10 @@ const Events = () => {
                         </div>
 
                         <div
-                          className={`bg-gray-800 rounded-lg p-4 w-full cursor-pointer transition-all duration-300 transform hover:scale-[1.02] hover:bg-gray-700 ${
-                            expandedCategory === `${chartIndex}-${eventIndex}`
+                          className={`bg-gray-800 rounded-lg p-4 w-full cursor-pointer transition-all duration-300 transform hover:scale-[1.02] hover:bg-gray-700 ${expandedCategory === `${chartIndex}-${eventIndex}`
                               ? "ring-2 ring-purple-500"
                               : ""
-                          }`}
+                            }`}
                           onClick={() =>
                             handleCategoryClick(chartIndex, eventIndex)
                           }
@@ -296,23 +293,21 @@ const Events = () => {
                               {event.title}
                             </h3>
                             <div
-                              className={`transform transition-transform duration-300 ${
-                                expandedCategory ===
-                                `${chartIndex}-${eventIndex}`
+                              className={`transform transition-transform duration-300 ${expandedCategory ===
+                                  `${chartIndex}-${eventIndex}`
                                   ? "rotate-180"
                                   : ""
-                              }`}
+                                }`}
                             >
                               ▼
                             </div>
                           </div>
 
                           <div
-                            className={`transition-all duration-500 ease-in-out ${
-                              expandedCategory === `${chartIndex}-${eventIndex}`
+                            className={`transition-all duration-500 ease-in-out ${expandedCategory === `${chartIndex}-${eventIndex}`
                                 ? "max-h-[800px] opacity-100 mt-4"
                                 : "max-h-0 opacity-0 overflow-hidden"
-                            }`}
+                              }`}
                           >
                             <div className="flex flex-col md:flex-row gap-6 items-start">
                               <div className="w-full md:w-1/3">
@@ -358,11 +353,10 @@ const Events = () => {
                                   ) : (
                                     <button
                                       onClick={() => handleRegisterClick(chart._id, event)}
-                                      className={`px-4 py-2 rounded-md transition duration-300 ${
-                                        event.registeredStudents.length >= event.participantLimit
+                                      className={`px-4 py-2 rounded-md transition duration-300 ${event.registeredStudents.length >= event.participantLimit
                                           ? "bg-gray-500 cursor-not-allowed"
                                           : "bg-purple-500 hover:bg-purple-600 text-white"
-                                      }`}
+                                        }`}
                                       disabled={event.registeredStudents.length >= event.participantLimit}
                                     >
                                       {event.registeredStudents.length >= event.participantLimit

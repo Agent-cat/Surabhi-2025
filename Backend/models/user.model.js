@@ -64,6 +64,17 @@ const userSchema = new mongoose.Schema(
       },
       required: false,
     },
+    phoneNumber: {
+      type: String,
+      required: true,
+      trim: true,
+      validate: {
+        validator: function (v) {
+          return /^\+?[\d\s-]{10,15}$/.test(v);
+        },
+        message: props => `${props.value} is not a valid phone number!`
+      }
+    },
   },
   {
     timestamps: true,

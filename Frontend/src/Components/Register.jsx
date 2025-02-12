@@ -228,6 +228,23 @@ const Register = () => {
               />
             </div>
             <div>
+              <label htmlFor="phoneNumber" className="block text-white mb-2">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                required
+                pattern="^\+?[\d\s-]{10,15}$"
+                placeholder="Enter your phone number"
+                disabled={isLoading}
+              />
+            </div>
+            <div>
               <label htmlFor="collegeId" className="block text-white mb-2">
                 College ID
               </label>
@@ -320,9 +337,8 @@ const Register = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-purple-500 text-white p-3 rounded-lg transition-all duration-300 ${
-                isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-purple-600"
-              }`}
+              className={`w-full bg-purple-500 text-white p-3 rounded-lg transition-all duration-300 ${isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-purple-600"
+                }`}
             >
               {isLoading ? "Registering..." : "Register"}
             </button>

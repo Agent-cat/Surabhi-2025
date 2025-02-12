@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FaYoutube } from "react-icons/fa";
 import { loadSlim } from "tsparticles-slim"; 
 import Particles from "react-tsparticles";
-
+import kl from "../assets/kl.png";
 
 // Import assets
 import video from "../assets/intro3.mp4";
@@ -316,6 +316,19 @@ const Home = () => {
             <source src={video} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/30 to-black/70" />
+         
+          <div className="flex flex-col gap-11">
+            <div className="flex w-full items-center justify-center">
+            <motion.img
+              src={kl}
+              alt="SURABHI"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-40 object-contain sm:w-64 md:w-48 z-10"
+            />
+            </div>
+            
           <motion.img
             src={logo}
             alt="SURABHI"
@@ -324,6 +337,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="w-48 object-contain sm:w-64 md:w-96 z-10"
           />
+          </div>
         </div>
         <div className="py-16 px-4">
           <div className="max-w-4xl mx-auto">

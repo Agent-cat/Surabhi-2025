@@ -1,26 +1,14 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { sendOTPEmail } from '../utils/emailService.js';
 
-const otpStore = new Map(); 
+const otpStore = new Map();
 
 const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-// Add this near the top of the file for testing
-const testEmailService = async () => {
-  try {
-    const result = await sendOTPEmail(process.env.EMAIL_USER, '123456');
-    console.log('Test email result:', result);
-  } catch (error) {
-    console.error('Test email failed:', error);
-  }
-};
 
-// Call this when the server starts
-testEmailService();
 
 export const register = async (req, res) => {
   try {
@@ -34,11 +22,21 @@ export const register = async (req, res) => {
       paymentScreenshot,
       state,
       address,
+      phoneNumber,
     } = req.body;
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({
+      $or: [
+        { email },
+        { phoneNumber }
+      ]
+    });
     if (existingUser) {
-      return res.status(400).json({ error: "User already exists" });
+      return res.status(400).json({
+        error: existingUser.email === email ?
+          "User already exists with this email" :
+          "Phone number already registered"
+      });
     }
 
     if (college === "kluniversity") {
@@ -53,6 +51,7 @@ export const register = async (req, res) => {
         fullName,
         state,
         address,
+        phoneNumber,
         paymentStatus: "approved",
         isApproved: true,
       });
@@ -87,6 +86,7 @@ export const register = async (req, res) => {
       fullName,
       state,
       address,
+      phoneNumber,
       paymentId,
       paymentScreenshot,
       paymentStatus: "pending",
@@ -97,12 +97,6 @@ export const register = async (req, res) => {
         collegeId: collegeId,
         fullName: fullName,
       },
-    });
-
-    console.log("Created registration:", {
-      email: pendingRegistration.email,
-      hasRegistrationData: !!pendingRegistration.registrationData,
-      registrationData: pendingRegistration.registrationData,
     });
 
     res.status(201).json({
@@ -143,18 +137,13 @@ export const login = async (req, res) => {
       }
       if (user.paymentStatus === "pending") {
         return res.status(403).json({
-          error:
-            "Your registration is pending approval. Please wait for admin confirmation.",
+          error: "Your registration is pending approval. Please wait for admin confirmation.",
           status: "pending",
         });
       }
     }
 
-    
-
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("Password match result:", isMatch);
-
     if (!isMatch) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
@@ -175,7 +164,6 @@ export const login = async (req, res) => {
       token,
     });
   } catch (error) {
-    console.error("Login error:", error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -188,13 +176,12 @@ export const verifyUser = async (req, res) => {
       return res.status(400).json({ error: "Email is required" });
     }
 
-    const user = await User.findOne({ email }).select('-password'); // Exclude password for security
+    const user = await User.findOne({ email }).select('-password');
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
 
-    // Return user details, excluding sensitive information
     res.status(200).json({
       _id: user._id,
       email: user.email,
@@ -215,7 +202,7 @@ export const verifyUser = async (req, res) => {
 export const sendVerificationOTP = async (req, res) => {
   try {
     const { email } = req.body;
-    
+
     // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {

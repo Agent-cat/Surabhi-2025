@@ -102,9 +102,8 @@ const Navbar = () => {
               <p className="text-sm text-gray-300 flex justify-between mt-2">
                 <span>Payment Status:</span>
                 <span
-                  className={`text-${
-                    user?.paymentStatus === "approved" ? "green" : "yellow"
-                  }-500`}
+                  className={`text-${user?.paymentStatus === "approved" ? "green" : "yellow"
+                    }-500`}
                 >
                   {user?.paymentStatus}
                 </span>
@@ -157,6 +156,7 @@ const Navbar = () => {
               SURABHI
             </h1>
           </div>
+
         </Link>
 
         {/* Desktop Navigation */}
@@ -206,19 +206,16 @@ const Navbar = () => {
           >
             <div className="w-5 h-4 flex flex-col justify-between relative">
               <span
-                className={`block h-0.5 bg-white transform transition-all duration-300 rounded-full ${
-                  isOpen ? "rotate-45 translate-y-1.5 w-5" : "w-5"
-                }`}
+                className={`block h-0.5 bg-white transform transition-all duration-300 rounded-full ${isOpen ? "rotate-45 translate-y-1.5 w-5" : "w-5"
+                  }`}
               ></span>
               <span
-                className={`block h-0.5 bg-white transition-all duration-300 rounded-full ${
-                  isOpen ? "opacity-0 w-5" : "w-4 ml-1"
-                }`}
+                className={`block h-0.5 bg-white transition-all duration-300 rounded-full ${isOpen ? "opacity-0 w-5" : "w-4 ml-1"
+                  }`}
               ></span>
               <span
-                className={`block h-0.5 bg-white transform transition-all duration-300 rounded-full ${
-                  isOpen ? "-rotate-45 -translate-y-1.5 w-5" : "w-3 ml-2"
-                }`}
+                className={`block h-0.5 bg-white transform transition-all duration-300 rounded-full ${isOpen ? "-rotate-45 -translate-y-1.5 w-5" : "w-3 ml-2"
+                  }`}
               ></span>
             </div>
           </button>
@@ -226,9 +223,8 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`lg:hidden fixed top-0 right-0 h-screen w-screen bg-black backdrop-blur-lg transform transition-transform duration-500 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } z-40 overflow-y-auto`}
+        className={`lg:hidden fixed top-0 right-0 h-screen w-screen bg-black backdrop-blur-lg transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+          } z-40 overflow-y-auto`}
       >
         <div className="flex flex-col items-center gap-8 p-8 w-full h-full">
           <div className="w-full flex flex-col gap-6 mt-16">

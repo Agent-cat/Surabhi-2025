@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { sendOTPEmail } from "../utils/emailService.js";
 
 const otpStore = new Map();
 
@@ -203,6 +204,8 @@ export const sendVerificationOTP = async (req, res) => {
   try {
     const { email } = req.body;
 
+    console.log('Received verification request for:', email);
+
     // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -218,13 +221,46 @@ export const sendVerificationOTP = async (req, res) => {
       expiry: expiryTime
     });
 
+    console.log('Generated OTP:', otp);
+
     // Send OTP email
     const emailSent = await sendOTPEmail(email, otp);
     if (!emailSent) {
-      throw new Error('Failed to send verification email');
+      throw new Error('Failed to send email. Please try again later.');
     }
 
     res.status(200).json({ message: "OTP sent successfully" });
+  } catch (error) {
+    console.error('Error in sendVerificationOTP:', error);
+    const errorMessage = error.code === 'EAUTH'
+      ? 'Email service configuration error'
+      : error.message || 'Failed to send OTP';
+    res.status(500).json({ error: errorMessage });
+  }
+};
+
+export const verifyOTP = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+
+    const storedOTPData = otpStore.get(email);
+    if (!storedOTPData) {
+      return res.status(400).json({ error: "OTP not found or expired. Please request a new one." });
+    }
+
+    if (Date.now() > storedOTPData.expiry) {
+      otpStore.delete(email);
+      return res.status(400).json({ error: "OTP has expired. Please request a new one." });
+    }
+
+    if (storedOTPData.otp !== otp) {
+      return res.status(400).json({ error: "Invalid OTP" });
+    }
+
+    // Clear the OTP after successful verification
+    otpStore.delete(email);
+
+    res.status(200).json({ message: "Email verified successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

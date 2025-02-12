@@ -1,5 +1,5 @@
 import express from "express";
-import { register, login, allUsers, verifyUser } from "../controllers/user.controller.js";
+import { register, login, allUsers, verifyUser, sendVerificationOTP, verifyOTP } from "../controllers/user.controller.js";
 import multer from "multer";
 import path from "path";
 
@@ -31,5 +31,7 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/all-users", allUsers);
 router.get("/verify-user", verifyUser);
+router.post("/send-verification-otp", sendVerificationOTP);
+router.post("/verify-otp", verifyOTP);
 
 export default router;

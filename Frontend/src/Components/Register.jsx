@@ -24,6 +24,10 @@ const Register = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [showOTPInput, setShowOTPInput] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [otpError, setOtpError] = useState('');
 
   const indianStates = [
     "Andhra Pradesh",
@@ -77,8 +81,85 @@ const Register = () => {
     }));
   };
 
+  const handleSendOTP = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      setOtpError(null);
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        throw new Error('Please enter a valid email address');
+      }
+
+      console.log('Sending OTP request for:', formData.email);
+
+      const response = await fetch(`${url}/api/users/send-verification-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: formData.email }),
+      });
+
+      const data = await response.json();
+
+      console.log('Server response:', data);
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send OTP');
+      }
+
+      setShowOTPInput(true);
+      setError(null);
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      setError(error.message || 'Failed to send OTP. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleVerifyOTP = async () => {
+    try {
+      setIsLoading(true);
+      setOtpError(null);
+
+      const response = await fetch(`${url}/api/users/verify-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          otp: otp,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error);
+      }
+
+      setIsEmailVerified(true);
+      setShowOTPInput(false);
+    } catch (error) {
+      setOtpError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isEmailVerified) {
+      setError("Please verify your email first");
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -197,6 +278,52 @@ const Register = () => {
                 disabled={isLoading}
               />
             </div>
+            {!isEmailVerified && (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleSendOTP}
+                  disabled={isLoading || !formData.email}
+                  className={`px-4 py-2 text-sm rounded bg-purple-500 text-white hover:bg-purple-600 transition-colors ${isLoading || !formData.email ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                >
+                  {isLoading ? 'Sending...' : 'Verify Email'}
+                </button>
+                {isEmailVerified && (
+                  <span className="text-green-500 text-sm">✓ Verified</span>
+                )}
+              </div>
+            )}
+            {showOTPInput && (
+              <div className="mt-4">
+                <label htmlFor="otp" className="block text-white mb-2">
+                  Enter OTP
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    id="otp"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                    placeholder="Enter 6-digit OTP"
+                    maxLength="6"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleVerifyOTP}
+                    disabled={isLoading || otp.length !== 6}
+                    className={`px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-600 transition-colors ${isLoading || otp.length !== 6 ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
+                  >
+                    {isLoading ? 'Verifying...' : 'Verify'}
+                  </button>
+                </div>
+                {otpError && (
+                  <p className="text-red-500 text-sm mt-1">{otpError}</p>
+                )}
+              </div>
+            )}
             <div>
               <label htmlFor="password" className="block text-white mb-2">
                 Password

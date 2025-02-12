@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const Footer = () => {
@@ -112,6 +112,8 @@ const Footer = () => {
           <p className="text-gray-400">
             &copy; {new Date().getFullYear()} Surabhi Festival, KL University.
             All rights reserved.
+            Develoepd by <a href="https://www.linkedin.com/in/vijay-nandyala/" target="_blank" className="text-white">Vijay Nandyala</a>
+            &nbsp; &  <a href="https://www.linkedin.com/in/vishnu-vardhan-a8a5b92a1/" target="_blank" className="text-white">Vishnu Vardhan</a>
           </p>
         </div>
       </div>

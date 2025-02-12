@@ -2,7 +2,7 @@ import React, { memo, useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaYoutube } from "react-icons/fa";
-import { loadSlim } from "tsparticles-slim"; 
+import { loadSlim } from "tsparticles-slim";
 import Particles from "react-tsparticles";
 import kl from "../assets/kl.png";
 
@@ -17,7 +17,7 @@ import partner from "../assets/partner.png"
 
 
 const timelineData = [
-  
+
   {
     year: 2024,
     title: "New Heights",
@@ -43,12 +43,12 @@ const timelineData = [
 
 const carouselImages = [
   poster2022,
-  poster2023, 
+  poster2023,
   poster2024,
   poster2025,
   poster2022,
   poster2022,
-  poster2023, 
+  poster2023,
   poster2024,
   poster2025,
   poster2022,
@@ -57,7 +57,7 @@ const carouselImages = [
 
 const chiefGuests = [
   {
-    name: "Ram Miriyala", 
+    name: "Ram Miriyala",
     role: "Singer",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379766/g2_nwtfyi.jpg"
   },
@@ -76,8 +76,8 @@ const chiefGuests = [
     role: "Actor",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379767/g1_gth4yu.jpg"
   },
-  
-  
+
+
   {
     name: "Naveen IAS",
     role: "IAS",
@@ -93,7 +93,7 @@ const chiefGuests = [
     role: "Actor",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379762/g6_qeve0t.jpg"
   },
-  
+
   {
     name: "Garima Bhardwaj",
     role: "Designer",
@@ -164,7 +164,7 @@ const g11 = 'https://i.imghippo.com/files/WAPo8312rIw.jpg';
 
 const Home = () => {
 
-  
+
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -316,27 +316,27 @@ const Home = () => {
             <source src={video} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/30 to-black/70" />
-         
+
           <div className="flex flex-col gap-11">
-            <div className="flex w-full items-center justify-center">
+            <div className="flex w-full md:hidden items-center justify-center">
+              <motion.img
+                src={kl}
+                alt="SURABHI"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="w-40 object-contain sm:w-64 md:w-48 z-10"
+              />
+            </div>
+
             <motion.img
-              src={kl}
+              src={logo}
               alt="SURABHI"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="w-40 object-contain sm:w-64 md:w-48 z-10"
+              className="w-60 object-contain sm:w-64 md:w-96 z-10"
             />
-            </div>
-            
-          <motion.img
-            src={logo}
-            alt="SURABHI"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-48 object-contain sm:w-64 md:w-96 z-10"
-          />
           </div>
         </div>
         <div className="py-16 px-4">
@@ -391,7 +391,7 @@ const Home = () => {
               className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-300 z-50"
             >
               <p>
-              Surabhi 2025 is a two-day National Cultural fest hosted by KL University, celebrating student creativity through music, dance, drama, and artistic expression. Featuring renowned artists alongside exceptional student talent, the event showcases diversity in a vibrant and supportive environment. This year, the fest is focused on overcoming past challenges to deliver an enriched and memorable experience for both participants and attendees.
+                Surabhi 2025 is a two-day National Cultural fest hosted by KL University, celebrating student creativity through music, dance, drama, and artistic expression. Featuring renowned artists alongside exceptional student talent, the event showcases diversity in a vibrant and supportive environment. This year, the fest is focused on overcoming past challenges to deliver an enriched and memorable experience for both participants and attendees.
               </p>
             </motion.div>
             <motion.div
@@ -401,7 +401,7 @@ const Home = () => {
               className="flex flex-col items-center"
             >
               <div className="w-full aspect-video rounded-lg overflow-hidden">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/LrSxZu86Jn0?si=WYeoEUB_ygvzPoqF&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/LrSxZu86Jn0?si=WYeoEUB_ygvzPoqF&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
               <a
                 href="https://youtu.be/LrSxZu86Jn0"
@@ -416,7 +416,7 @@ const Home = () => {
           </div>
         </div>
 
-       
+
         <div className="py-16 ">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
@@ -432,7 +432,7 @@ const Home = () => {
                   key={step.id}
                   className="relative bg-purple-900/20 rounded-xl p-8 backdrop-blur-sm border border-purple-500/20 group hover:border-purple-500/40 transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_30px_-10px_rgba(196,130,252,0.2)]"
                 >
-                  
+
                   <div className="absolute -top-6 left-6 w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center text-2xl font-bold text-white transform -rotate-12 group-hover:rotate-0 transition-transform duration-300 shadow-lg">
                     {step.id}
                   </div>
@@ -466,18 +466,18 @@ const Home = () => {
             transition={{ duration: 0.5 }}
             className="text-2xl sm:text-3xl md:text-4xl font-saint-carell font-bold mb-6 md:mb-8 text-center text-white"
           >
-           Previous Chief Guests
+            Previous Chief Guests
           </motion.h2>
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {visibleGuests.map((guest, index) => (
                 <ChiefGuestImage key={index} guest={guest} />
-                
+
               ))}
             </div>
-            
+
             <div className="flex justify-center mt-8 gap-4">
-              <button 
+              <button
                 onClick={prevGuests}
                 className="bg-purple-900/50 p-2 rounded-full hover:bg-purple-900 transition-colors duration-300"
               >
@@ -485,7 +485,7 @@ const Home = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-              
+
               <button
                 onClick={nextGuests}
                 className="bg-purple-900/50 p-2 rounded-full hover:bg-purple-900 transition-colors duration-300"
@@ -526,9 +526,8 @@ const Home = () => {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`flex flex-col  sm:flex-row items-start sm:items-center mb-16 sm:mb-24 ${
-                  index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
-                }`}
+                className={`flex flex-col  sm:flex-row items-start sm:items-center mb-16 sm:mb-24 ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
+                  }`}
               >
                 <div className="w-full sm:w-1/2 pl-12 sm:px-8 mb-4 sm:mb-0">
                   <TimelineImage item={item} />
@@ -552,26 +551,26 @@ const Home = () => {
         </div>
 
         <div className="guests">
-  <div className="scroll-container">
-    <div className="imgscroll">
-      <img src={g1} alt="" className="g1" />
-      <img src={g2} alt="" className="g1" />
-      <img src={g3} alt="" className="g1" />
-      <img src={g4} alt="" className="g1" />
-      <img src={g5} alt="" className="g1" />
-      <img src={g6} alt="" className="g1" />
-      <img src={g7} alt="" className="g1" />
-      <img src={g8} alt="" className="g1" />
-      <img src={g9} alt="" className="g1" />
-      <img src={g10} alt="" className="g1" />
-      <img src={g11} alt="" className="g1" />
-      
-    </div>
-  </div>
-</div>
+          <div className="scroll-container">
+            <div className="imgscroll">
+              <img src={g1} alt="" className="g1" />
+              <img src={g2} alt="" className="g1" />
+              <img src={g3} alt="" className="g1" />
+              <img src={g4} alt="" className="g1" />
+              <img src={g5} alt="" className="g1" />
+              <img src={g6} alt="" className="g1" />
+              <img src={g7} alt="" className="g1" />
+              <img src={g8} alt="" className="g1" />
+              <img src={g9} alt="" className="g1" />
+              <img src={g10} alt="" className="g1" />
+              <img src={g11} alt="" className="g1" />
+
+            </div>
+          </div>
+        </div>
 
         {/* Our Partners Section */}
-        
+
         <div className="w-full py-12 sm:py-16 px-4">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -582,13 +581,13 @@ const Home = () => {
           </motion.h2>
           <div className="">
             <div className="flex justify-center">
-              <img src={partner} alt="" className="g1 h-32 w-80"/>
-              
+              <img src={partner} alt="" className="g1 h-32 w-80" />
+
             </div>
           </div>
-      
+
         </div>
-        
+
         {/* Map Section */}
         <div className="w-full py-12 sm:py-16 px-4">
           <motion.h2

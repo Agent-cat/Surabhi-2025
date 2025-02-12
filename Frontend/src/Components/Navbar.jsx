@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { getUser, removeToken, removeUser } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/surabhi.png";
+import kl from "../assets/kl.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(getUser());
@@ -151,10 +152,14 @@ const Navbar = () => {
         {/* Logo moved to left */}
         <Link to="/" className="flex gap-2 items-center">
           <img src={logo} alt="logo" className="w-10 h-12" />
-          <div className="flex gap-2 items-center">
-            <h1 className="text-2xl font-bold font-saint-carell text-white hover:text-gray-300 transition-colors">
-              SURABHI
-            </h1>
+          <div className="flex  gap-2 items-center">
+            <div className="flex gap-3 items-center">
+              <h1 className="text-2xl font-bold font-saint-carell text-white hover:text-gray-300 transition-colors">
+                SURABHI
+              </h1>
+              <img src={kl} alt="logo" className="w-32 h-10" />
+            </div>
+
           </div>
 
         </Link>
@@ -176,8 +181,11 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Desktop Auth Section and Hamburger Menu */}
+
+
+
         <div className="flex items-center gap-4">
+          {/* <img src={kl} alt="logo" className="w-36 hidden md:inline h-12" /> */}
           <div className="hidden lg:block">
             {user ? (
               <ProfileDropdown />

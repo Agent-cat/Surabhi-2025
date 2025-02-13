@@ -223,7 +223,7 @@ export const createEventInCategory = async (req, res) => {
       image: req.body.image,
       termsandconditions: req.body.termsandconditions,
       registeredStudents: [],
-      participantLimit: req.body.participantLimit
+      participantLimit: req.body.participantLimit || 100, // Default to 100 if not provided
     });
 
     await category.save();
@@ -252,7 +252,7 @@ export const updateEventInCategory = async (req, res) => {
       details: req.body.details,
       image: req.body.image,
       termsandconditions: req.body.termsandconditions,
-      participantLimit: req.body.participantLimit
+      participantLimit: req.body.participantLimit, // Ensure this is updated
     });
 
     await category.save();

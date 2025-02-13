@@ -14,6 +14,7 @@ import AuthRoute from "../utils/AuthRoute";
 import { getUser } from "../utils/auth";
 import PleaseLogin from "../Components/PleaseLogin";
 import ForgotPassword from "../Components/ForgotPassword";
+import UserDetails from "../Components/UserDetails";
 
 const NRoutes = () => {
   const user = getUser();
@@ -62,6 +63,14 @@ const NRoutes = () => {
         }
       />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route
+        path="/user-details/:email"
+        element={
+          <ProtectedRoute>
+            {isAdmin ? <UserDetails /> : <Navigate to="/" />}
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 };

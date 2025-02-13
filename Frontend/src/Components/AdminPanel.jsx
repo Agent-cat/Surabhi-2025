@@ -123,6 +123,24 @@ const EventModal = React.memo(
 
               <div>
                 <label className="block text-purple-300 mb-2">
+                  Participation Limit
+                </label>
+                <input
+                  type="number"
+                  value={eventForm.participantLimit}
+                  onChange={(e) =>
+                    setEventForm({
+                      ...eventForm,
+                      participantLimit: e.target.value,
+                    })
+                  }
+                  className="w-full bg-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-purple-300 mb-2">
                   Terms and Conditions
                 </label>
                 <textarea
@@ -254,9 +272,8 @@ const EventRegistrations = ({ event, onClose }) => {
     XLSX.utils.book_append_sheet(wb, ws, "Registrations");
 
     // Generate filename with event title and date
-    const fileName = `${event.title}_registrations_${
-      new Date().toISOString().split("T")[0]
-    }.xlsx`;
+    const fileName = `${event.title}_registrations_${new Date().toISOString().split("T")[0]
+      }.xlsx`;
 
     // Save file
     XLSX.writeFile(wb, fileName);
@@ -398,12 +415,26 @@ const EventRegistrations = ({ event, onClose }) => {
   );
 };
 
+
+const getStatusBadgeColor = (status) => {
+  switch (status) {
+    case 'pending':
+      return 'bg-yellow-500';
+    case 'approved':
+      return 'bg-green-500';
+    case 'rejected':
+      return 'bg-red-500';
+    default:
+      return 'bg-gray-500';
+  }
+};
+
 const AdminPanel = () => {
   const [registrations, setRegistrations] = useState([]);
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState("pending"); // "pending", "approved", "rejected"
-  const [view, setView] = useState("registrations"); // "registrations" or "events"
+  const [view, setView] = useState("registrations");
   const [showEventModal, setShowEventModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -416,6 +447,7 @@ const AdminPanel = () => {
     time: "",
     image: "",
     termsandconditions: "",
+    participantLimit: "",
   });
   const [categoryForm, setCategoryForm] = useState({
     categoryName: "",
@@ -433,6 +465,7 @@ const AdminPanel = () => {
       time: "",
       image: "",
       termsandconditions: "",
+      participantLimit: "",
     });
     setEditingEvent(null);
   }, []);
@@ -454,8 +487,7 @@ const AdminPanel = () => {
   const fetchRegistrations = async () => {
     try {
       const response = await fetch(
-        `${url}/api/admin/registrations${
-          filter !== "all" ? `?status=${filter}` : ""
+        `${url}/api/admin/registrations${filter !== "all" ? `?status=${filter}` : ""
         }`,
         {
           headers: {
@@ -507,17 +539,6 @@ const AdminPanel = () => {
         return "text-red-500";
       default:
         return "text-yellow-500";
-    }
-  };
-
-  const getStatusBadgeColor = (status) => {
-    switch (status) {
-      case "approved":
-        return "bg-green-100 text-green-800";
-      case "rejected":
-        return "bg-red-100 text-red-800";
-      default:
-        return "bg-yellow-100 text-yellow-800";
     }
   };
 
@@ -584,6 +605,7 @@ const AdminPanel = () => {
           },
           image: eventForm.image,
           termsandconditions: eventForm.termsandconditions,
+          participantLimit: eventForm.participantLimit,
         };
 
         const response = await fetch(
@@ -625,11 +647,17 @@ const AdminPanel = () => {
       time: "",
       image: "",
       termsandconditions: "",
+      participantLimit: "",
     });
     setShowEventModal(true);
   }, []);
 
   const handleEditEvent = useCallback((category, event) => {
+    if (!category || !event) {
+      console.error("Category or event data is missing");
+      return;
+    }
+
     setSelectedCategory(category._id);
     setEditingEvent(event);
     setEventForm({
@@ -640,6 +668,7 @@ const AdminPanel = () => {
       time: event.details.time,
       image: event.image,
       termsandconditions: event.termsandconditions,
+      participantLimit: event.participantLimit,
     });
     setShowEventModal(true);
   }, []);
@@ -786,21 +815,19 @@ const AdminPanel = () => {
           <div className="flex flex-wrap gap-3 sm:gap-4 w-full sm:w-auto">
             <button
               onClick={() => setView("registrations")}
-              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                view === "registrations"
-                  ? "bg-purple-600 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-purple-500"
-              }`}
+              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${view === "registrations"
+                ? "bg-purple-600 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-purple-500"
+                }`}
             >
               Registrations
             </button>
             <button
               onClick={() => setView("events")}
-              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                view === "events"
-                  ? "bg-purple-600 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-purple-500"
-              }`}
+              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${view === "events"
+                ? "bg-purple-600 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-purple-500"
+                }`}
             >
               Events
             </button>
@@ -811,31 +838,28 @@ const AdminPanel = () => {
           <div className="flex gap-4 mb-6">
             <button
               onClick={() => setFilter("pending")}
-              className={`px-4 py-2 rounded-lg ${
-                filter === "pending"
-                  ? "bg-yellow-500 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-yellow-500"
-              }`}
+              className={`px-4 py-2 rounded-lg ${filter === "pending"
+                ? "bg-yellow-500 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-yellow-500"
+                }`}
             >
               Pending
             </button>
             <button
               onClick={() => setFilter("approved")}
-              className={`px-4 py-2 rounded-lg ${
-                filter === "approved"
-                  ? "bg-green-500 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-green-500"
-              }`}
+              className={`px-4 py-2 rounded-lg ${filter === "approved"
+                ? "bg-green-500 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-green-500"
+                }`}
             >
               Approved
             </button>
             <button
               onClick={() => setFilter("rejected")}
-              className={`px-4 py-2 rounded-lg ${
-                filter === "rejected"
-                  ? "bg-red-500 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-red-500"
-              }`}
+              className={`px-4 py-2 rounded-lg ${filter === "rejected"
+                ? "bg-red-500 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-red-500"
+                }`}
             >
               Rejected
             </button>
@@ -1082,7 +1106,7 @@ const AdminPanel = () => {
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleEditEvent(category._id, event);
+                                handleEditEvent(category, event);
                               }}
                               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200"
                             >

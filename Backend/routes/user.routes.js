@@ -2,6 +2,7 @@ import express from "express";
 import { register, login, allUsers, verifyUser, sendVerificationOTP, verifyOTP, sendPasswordResetOTP, resetPassword } from "../controllers/user.controller.js";
 import multer from "multer";
 import path from "path";
+import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -30,7 +31,12 @@ router.post("/upload", upload.single("file"), (req, res) => {
 router.post("/register", register);
 router.post("/login", login);
 router.get("/all-users", allUsers);
-router.get("/verify-user", verifyUser);
+router.get("/verify-user", protect, async (req, res, next) => {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({ message: "Access denied" });
+  }
+  next();
+}, verifyUser);
 router.post("/send-verification-otp", sendVerificationOTP);
 router.post("/verify-otp", verifyOTP);
 router.post("/send-reset-otp", sendPasswordResetOTP);

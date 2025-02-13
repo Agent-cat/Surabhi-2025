@@ -164,7 +164,7 @@ const Navbar = () => {
 
         </Link>
 
-        {/* Desktop Navigation */}
+
         <div className="hidden lg:flex gap-8 font-semibold">
           {navigationLinks.map((link) => (
             <NavLink
@@ -184,7 +184,7 @@ const Navbar = () => {
 
 
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center ml-10 gap-4">
           {/* <img src={kl} alt="logo" className="w-36 hidden md:inline h-12" /> */}
           <div className="hidden lg:block">
             {user ? (

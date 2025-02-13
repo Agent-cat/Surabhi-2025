@@ -8,18 +8,16 @@ import eventRoutes from "./routes/event.routes.js";
 
 const app = express();
 
-// Basic middleware
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL 
-    : true,
-  credentials: true,
+  origin: '*',
+
 }));
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Routes
+
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/events", eventRoutes);

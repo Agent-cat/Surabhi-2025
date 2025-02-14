@@ -75,6 +75,17 @@ const userSchema = new mongoose.Schema(
         message: props => `${props.value} is not a valid phone number!`
       }
     },
+    paymentDetails: {
+      orderId: String,
+      amount: String,
+      status: {
+        type: String,
+        enum: ['initiated', 'completed', 'failed'],
+        default: 'initiated'
+      },
+      transactionId: String,
+      transactionDate: Date
+    },
   },
   {
     timestamps: true,

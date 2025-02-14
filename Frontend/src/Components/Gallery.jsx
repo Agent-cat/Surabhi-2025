@@ -10,42 +10,64 @@ const Gallery = () => {
   // Define events first with memoization
   const events = useMemo(() => ({
     Natayaka: [
-      { image: "https://i.imghippo.com/files/ntv8180co.jpg" },
-      { image: "https://i.imghippo.com/files/wVW1384II.jpg" },
-      { image: "https://i.imghippo.com/files/iKNg1976KoI.jpg" },
-      { image: "https://i.imghippo.com/files/wYBV3499MLk.jpg" },
-      { image: "https://i.imghippo.com/files/HJaT8011tM.jpg" },
-      { image: "https://i.imghippo.com/files/UtJ5585PFo.jpg" },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ebme2gr6fygajjkvvqsy"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/e5mpbzsjrlopvdai3hxp"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ds6ddjdgw5qy9qasohpq"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/tr5lyovvl2pjsssggv4z"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/tr5lyovvl2pjsssggv4z"
+      },
+      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/wv9szofzmz1udissuts3" },
     ],
     Chitrakala: [
-      { image: "https://i.imghippo.com/files/YagJ8988UkQ.jpg" },
-      { image: "https://i.imghippo.com/files/FlKQ8861kAw.jpg" },
-      { image: "https://i.imghippo.com/files/pPfL5365T.jpg" },
-      { image: "https://i.imghippo.com/files/gOHk2168Nc.jpg" },
-      { image: "https://i.imghippo.com/files/pPfL5365T.jpg" },
-
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/bshgb02n2w459tdqwisn"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/zrvhpewod57jo60284xl"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/imojqcrvc6zh00bgdgrl"
+      },
+      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/hctihg9kmp8pau6qzu38 " }
     ],
     Nritya: [
-      { image: "https://i.imghippo.com/files/ex3195bc.jpg" },
-      { image: "https://i.imghippo.com/files/dXm8770qPM.jpg" },
-      { image: "https://i.imghippo.com/files/XEZv4283NU.jpg" },
-      { image: "https://i.imghippo.com/files/kJpN7106VK.jpg" },
-      { image: "https://i.imghippo.com/files/UPln2931Nxw.jpg" },
-      { image: "https://i.imghippo.com/files/yg8899L.jpg" },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/zah2z7z7i3tfn4wdho9a"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/prvyhc1ymgir2ddxcqbf"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/m6yumr5jjyflq1cpoe36"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/v97j9x4sbp8vr8rugcvs"
+      },
+      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/kbcsnbz1ffsptfud5c2x " },
+
     ],
     Raaga: [
-      { image: "https://i.imghippo.com/files/Ucnt4087A.jpg" },
-      { image: "https://i.imghippo.com/files/jgs1766ziY.jpg" },
-      { image: "https://i.imghippo.com/files/eAI9348oqw.jpg" },
-      { image: "https://i.imghippo.com/files/eAI9348oqw.jpg" },
-      { image: "https://i.imghippo.com/files/YHAR8241Z.jpg" },
-      { image: "https://i.imghippo.com/files/KfXn6335eQU.jpg" },
-      { image: "https://i.imghippo.com/files/KfXn6335eQU.jpg" },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/jj7dbzavm3oaw2rkwk1n"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/chnak5v5zgvdksqzyik5"
+      },
+      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ssam6cwb6t9alvb5eonn " },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/chnak5v5zgvdksqzyik5"
+      },
+      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ssam6cwb6t9alvb5eonn " },
 
-
-
-      { image: "https://i.imghippo.com/files/BVuY2188Lj.jpg" },
-      { image: "https://i.imghippo.com/files/BVuY2188Lj.jpg" },
 
     ],
     CineCarnival: [
@@ -59,25 +81,50 @@ const Gallery = () => {
       { image: "https://i.imghippo.com/files/EUa6624jVk.jpg" },
     ],
     Sahithya: [
-      { image: "https://i.imghippo.com/files/Sb6106Oog.jpg" },
-      { image: "https://i.imghippo.com/files/xeC4010Jyc.jpg" },
-      { image: "https://i.imghippo.com/files/yvH4876OKA.jpg" },
-      { image: "https://i.imghippo.com/files/BfOb5980kns.jpg" },
-      { image: "https://i.imghippo.com/files/Xmod2075bDU.jpg" },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/xkwmveyttcxd7qg5x0dr"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ayelavartxdknw9eb8xe"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/vbu9x52ys5ju3rmuqjag"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/bnlo5ppknymul0n7j7n8"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/c5m8ydmaw6yfp5ulfqsr"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/wcn0ek9ztpo7uuu5nmmc "
+      },
 
     ],
     Vastrashala: [
-      { image: "https://i.imghippo.com/files/IQfu6477O.jpg" },
-      { image: "https://i.imghippo.com/files/CfF6396wOo.jpg" },
-      { image: "https://i.imghippo.com/files/Qtt7527iyg.jpg" },
-      { image: "https://i.imghippo.com/files/VMXL5031AmE.jpg" },
-      { image: "https://i.imghippo.com/files/OgH5926ac.jpg" },
-      { image: "https://i.imghippo.com/files/fgjO4196iU.jpg" },
-      { image: "https://i.imghippo.com/files/FWT8820dzg.jpg" },
-      { image: "https://i.imghippo.com/files/fgjO4196iU.jpg" },
-      { image: "https://i.imghippo.com/files/FBO7271rO.jpg" },
-      { image: "https://i.imghippo.com/files/FBO7271rO.jpg" },
-      { image: "https://i.imghippo.com/files/wOdD4411wQU.jpg" },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/uerk1z4cqwi9fwqtdech"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/aleb4pm0zrlsqvffq6i5"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/c5liv9ujan7hikafbw2l"//ndadna
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/c5liv9ujan7hikafbw2l"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ifpoieisg5iulkehjwps"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/xbluwxy3qjejnxfnhlvh"
+      },
+      {
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/j3ytvfppkftixjg44lmr"
+      },
+      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/asg7mpw8mqkwk5rduj0o" },
+
     ],
   }), []);
 

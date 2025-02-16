@@ -134,17 +134,17 @@ const participationSteps = [
   }
 ];
 
-const g1 = 'https://i.imghippo.com/files/sM6764Naw.jpg';
-const g2 = 'https://i.imghippo.com/files/tHKJ9883hg.jpg';
-const g3 = 'https://i.imghippo.com/files/atP5261FE.jpg';
-const g4 = 'https://i.imghippo.com/files/eQpS7880Hk.jpg';
-const g5 = 'https://i.imghippo.com/files/nGdf6086yuc.jpg';
-const g6 = 'https://i.imghippo.com/files/eeh9105BdI.jpg';
-const g7 = 'https://i.imghippo.com/files/nJOW7845nI.jpg';
-const g8 = 'https://i.imghippo.com/files/clB1359zg.jpg';
-const g9 = 'https://i.imghippo.com/files/Xps1391kY.jpg';
-const g10 = 'https://i.imghippo.com/files/IJtP9786bm.jpg';
-const g11 = 'https://i.imghippo.com/files/WAPo8312rIw.jpg';
+const g1 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/q2c0ccumfs2iztxhxcmh';
+const g2 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/i7qhjtrikaqcfqgnkyvk';
+const g3 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/jjkoq15gzm93zkygnckw';
+const g4 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/buadaqs3homnlaqpctwe';
+const g5 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/kp3tn5gewnyaabc4gms6';
+const g6 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/ag1jyj78fkw4moqavptl';
+const g7 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/apowslnjwi6db0fmezfq';
+const g8 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/sskhxznpaphul2lyekkm';
+const g9 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/bqcb7hzkflw4v9nhcpfb';
+const g10 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/gsuh21bq4eiveiaklalz';
+const g11 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/aulomipj8ukf4cboywbg';
 
 
 const Home = () => {
@@ -376,7 +376,7 @@ const Home = () => {
               className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-300 z-50"
             >
               <p>
-                Surabhi 2025 is a two-day National Cultural fest hosted by KL University, celebrating student creativity through music, dance, drama, and artistic expression. Featuring renowned artists alongside exceptional student talent, the event showcases diversity in a vibrant and supportive environment. This year, the fest is focused on overcoming past challenges to deliver an enriched and memorable experience for both participants and attendees.
+                Surabhi 2025 is a two-day International Cultural fest hosted by KL University, celebrating student creativity through music, dance, drama, and artistic expression. Featuring renowned artists alongside exceptional student talent, the event showcases diversity in a vibrant and supportive environment. This year, the fest is focused on overcoming past challenges to deliver an enriched and memorable experience for both participants and attendees.
               </p>
             </motion.div>
             <motion.div

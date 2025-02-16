@@ -20,6 +20,8 @@ const Register = () => {
     otherCollegeName: "",
     state: "",
     address: "",
+    country: "India",
+    otherCountryName: "",
   });
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -78,6 +80,15 @@ const Register = () => {
       ...prev,
       college: value,
       otherCollegeName: value === "kluniversity" ? "" : prev.otherCollegeName,
+    }));
+  };
+
+  const handleCountryChange = (e) => {
+    const { value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      country: value,
+      otherCountryName: value === "Other" ? "" : prev.otherCountryName,
     }));
   };
 
@@ -386,6 +397,8 @@ const Register = () => {
                 disabled={isLoading}
               />
             </div>
+
+
             <div>
               <label htmlFor="college" className="block text-white mb-2">
                 College
@@ -423,27 +436,61 @@ const Register = () => {
               )}
             </div>
 
+
             <div>
-              <label htmlFor="state" className="block text-white mb-2">
-                State
+              <label htmlFor="country" className="block text-white mb-2">
+                Country
               </label>
               <select
-                id="state"
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
+                id="country"
+                name="country"
+                value={formData.country}
+                onChange={handleCountryChange}
                 className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
                 required
                 disabled={isLoading}
               >
-                <option value="">Select State</option>
-                {indianStates.map((state) => (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                ))}
+                <option value="India">India</option>
+                <option value="Other">Other</option>
               </select>
+              {formData.country === "Other" && (
+                <input
+                  type="text"
+                  id="otherCountryName"
+                  name="otherCountryName"
+                  value={formData.otherCountryName}
+                  onChange={handleChange}
+                  placeholder="Enter your country name"
+                  className="w-full px-4 py-2 mt-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                  required
+                  disabled={isLoading}
+                />
+              )}
             </div>
+
+            {formData.country === "India" && (
+              <div>
+                <label htmlFor="state" className="block text-white mb-2">
+                  State
+                </label>
+                <select
+                  id="state"
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                  required
+                  disabled={isLoading}
+                >
+                  <option value="">Select State</option>
+                  {indianStates.map((state) => (
+                    <option key={state} value={state}>
+                      {state}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             <div>
               <label htmlFor="address" className="block text-white mb-2">
@@ -460,6 +507,7 @@ const Register = () => {
                 rows="3"
               />
             </div>
+
 
             <button
               type="submit"

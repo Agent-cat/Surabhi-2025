@@ -11,21 +11,21 @@ const Gallery = () => {
   const events = useMemo(() => ({
     Natayaka: [
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ebme2gr6fygajjkvvqsy"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/rujqmccrolwh0mauzdjl"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/e5mpbzsjrlopvdai3hxp"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/lp8qbr0ayhm45zrklyox"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ds6ddjdgw5qy9qasohpq"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/uc7xng6t2idqpz6xi3bt"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/tr5lyovvl2pjsssggv4z"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/uc7xng6t2idqpz6xi3bt"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/tr5lyovvl2pjsssggv4z"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/cbc7crd4sugm1efgrcmx"
       },
-      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/wv9szofzmz1udissuts3" },
+
     ],
     Chitrakala: [
       {
@@ -41,32 +41,32 @@ const Gallery = () => {
     ],
     Nritya: [
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/zah2z7z7i3tfn4wdho9a"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/sf4pvcmerjbmjodbbkzu"
       },
       {
         image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/prvyhc1ymgir2ddxcqbf"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/m6yumr5jjyflq1cpoe36"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/z9azkalce0atetbo2bup"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/v97j9x4sbp8vr8rugcvs"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/z9azkalce0atetbo2bup"
       },
-      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/kbcsnbz1ffsptfud5c2x " },
+      { image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/bzy6v6yvficpfg1whfxy" },
 
     ],
     Raaga: [
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/jj7dbzavm3oaw2rkwk1n"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/aia96c9di15gcxdzl8yg"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/chnak5v5zgvdksqzyik5"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/fsxw9jyttztqcvz1leml"
       },
-      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ssam6cwb6t9alvb5eonn " },
+      { image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/u4tkqqbbjq5gyhundtvb" },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/chnak5v5zgvdksqzyik5"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/hpycdwp1subfmwsrpgd8"
       },
-      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ssam6cwb6t9alvb5eonn " },
+      { image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/u4tkqqbbjq5gyhundtvb" },
 
 
     ],
@@ -103,16 +103,16 @@ const Gallery = () => {
     ],
     Vastrashala: [
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/uerk1z4cqwi9fwqtdech"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/jnpqqarwsfgmiyyta4wp"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/aleb4pm0zrlsqvffq6i5"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/obotkukt4aqcfjwxzxnc"
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/c5liv9ujan7hikafbw2l"//ndadna
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/pt6cw3chmhb7lbasc4yh"//ndadna
       },
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/c5liv9ujan7hikafbw2l"
+        image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/pt6cw3chmhb7lbasc4yh"
       },
       {
         image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ifpoieisg5iulkehjwps"
@@ -123,7 +123,7 @@ const Gallery = () => {
       {
         image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/j3ytvfppkftixjg44lmr"
       },
-      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/asg7mpw8mqkwk5rduj0o" },
+      { image: "https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/n0x73xxjpe49j8xylc3h" },
 
     ],
   }), []);

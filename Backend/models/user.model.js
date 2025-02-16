@@ -86,6 +86,10 @@ const userSchema = new mongoose.Schema(
       transactionId: String,
       transactionDate: Date
     },
+    country: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

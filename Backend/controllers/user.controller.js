@@ -22,6 +22,8 @@ export const register = async (req, res) => {
       state,
       address,
       phoneNumber,
+      country,
+      otherCountryName,
     } = req.body;
 
     const existingUser = await User.findOne({
@@ -51,6 +53,7 @@ export const register = async (req, res) => {
         state,
         address,
         phoneNumber,
+        country: country === "Other" ? otherCountryName : country,
         paymentStatus: "approved",
         isApproved: true,
       });

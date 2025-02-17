@@ -46,4 +46,25 @@ export const sendOTPEmail = async (email, otp) => {
         }
         return false;
     }
+};
+
+export const sendEmailWithAttachment = async (email, qrCodeDataUrl) => {
+    try {
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'Your Registration QR Code',
+            html: `
+        <p>Thank you for registering. Please find your QR code below:</p>
+        <img src="${qrCodeDataUrl}" alt="QR Code" />
+      `,
+        };
+
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully:', info.messageId);
+        return true;
+    } catch (error) {
+        console.error('Error in sendEmailWithAttachment:', error);
+        return false;
+    }
 }; 

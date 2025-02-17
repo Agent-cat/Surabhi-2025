@@ -1,7 +1,8 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { sendOTPEmail } from "../utils/emailService.js";
+import { sendOTPEmail, sendEmailWithAttachment } from "../utils/emailService.js";
+import QRCode from 'qrcode';
 
 const otpStore = new Map();
 
@@ -76,6 +77,15 @@ export const register = async (req, res) => {
       });
     }
 
+    if (college !== "kluniversity") {
+      // Generate QR code
+      const qrUrl = `${process.env.FRONTEND_URL}/user-details/${email}`;
+      const qrCodeDataUrl = await QRCode.toDataURL(qrUrl);
+
+      // Send email with QR code
+      await sendEmailWithAttachment(email, qrCodeDataUrl);
+    }
+
     const tempPassword = "pending_" + Math.random().toString(36).slice(2);
     const salt = await bcrypt.genSalt(10);
     const hashedTempPassword = await bcrypt.hash(tempPassword, salt);
@@ -89,6 +99,7 @@ export const register = async (req, res) => {
       state,
       address,
       phoneNumber,
+      country: country === "Other" ? otherCountryName : country,
       paymentId,
       paymentScreenshot,
       paymentStatus: "pending",

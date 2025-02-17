@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
+import { Buffer } from 'buffer';
 
 const transporter = nodemailer.createTransport({
-
     host: 'smtp.office365.com',
     port: 587,
     secure: false,
@@ -16,9 +16,6 @@ const transporter = nodemailer.createTransport({
 
 export const sendOTPEmail = async (email, otp) => {
     try {
-
-
-
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
@@ -50,14 +47,24 @@ export const sendOTPEmail = async (email, otp) => {
 
 export const sendEmailWithAttachment = async (email, qrCodeDataUrl) => {
     try {
+        // Convert data URL to a buffer
+        const base64Data = qrCodeDataUrl.replace(/^data:image\/png;base64,/, "");
+        const qrCodeBuffer = Buffer.from(base64Data, 'base64');
+
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
             subject: 'Your Registration QR Code',
             html: `
-        <p>Thank you for registering. Please find your QR code below:</p>
-        <img src="${qrCodeDataUrl}" alt="QR Code" />
+        <p>Thank you for registering. Please find your QR code attached below:</p>
       `,
+            attachments: [
+                {
+                    filename: 'qr-code.png',
+                    content: qrCodeBuffer,
+                    contentType: 'image/png'
+                }
+            ]
         };
 
         const info = await transporter.sendMail(mailOptions);

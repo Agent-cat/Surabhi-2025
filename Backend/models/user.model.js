@@ -90,6 +90,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    hasEntered: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

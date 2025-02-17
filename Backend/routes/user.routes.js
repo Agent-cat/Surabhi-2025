@@ -1,5 +1,5 @@
 import express from "express";
-import { register, login, allUsers, verifyUser, sendVerificationOTP, verifyOTP, sendPasswordResetOTP, resetPassword } from "../controllers/user.controller.js";
+import { register, login, allUsers, verifyUser, sendVerificationOTP, verifyOTP, sendPasswordResetOTP, resetPassword, updateHasEntered } from "../controllers/user.controller.js";
 import multer from "multer";
 import path from "path";
 import protect from "../middleware/authMiddleware.js";
@@ -41,5 +41,6 @@ router.post("/send-verification-otp", sendVerificationOTP);
 router.post("/verify-otp", verifyOTP);
 router.post("/send-reset-otp", sendPasswordResetOTP);
 router.post("/reset-password", resetPassword);
+router.post("/update-has-entered", updateHasEntered);
 
 export default router;

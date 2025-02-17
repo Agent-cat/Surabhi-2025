@@ -57,6 +57,7 @@ export const register = async (req, res) => {
         country: country === "Other" ? otherCountryName : country,
         paymentStatus: "approved",
         isApproved: true,
+        hasEntered: false,
       });
 
       const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
@@ -110,6 +111,7 @@ export const register = async (req, res) => {
         collegeId: collegeId,
         fullName: fullName,
       },
+      hasEntered: false,
     });
 
     res.status(201).json({
@@ -205,7 +207,8 @@ export const verifyUser = async (req, res) => {
       address: user.address,
       paymentStatus: user.paymentStatus,
       isApproved: user.isApproved,
-      role: user.role
+      role: user.role,
+      hasEntered: user.hasEntered,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -343,6 +346,24 @@ export const resetPassword = async (req, res) => {
     otpStore.delete(`reset_${email}`);
 
     res.status(200).json({ message: "Password reset successful" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const updateHasEntered = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    user.hasEntered = !user.hasEntered; // Toggle the hasEntered status
+    await user.save();
+
+    res.status(200).json({ message: "User entry status updated", hasEntered: user.hasEntered });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

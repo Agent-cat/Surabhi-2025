@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import QRCode from "qrcode";
-import { sendEmailWithAttachment } from "../utils/email.utils.js";
+import { sendEmailWithAttachment } from "../utils/emailService.js";
 
 export const getRegistrations = async (req, res) => {
   try {

@@ -78,14 +78,7 @@ export const register = async (req, res) => {
       });
     }
 
-    if (college !== "kluniversity") {
-      // Generate QR code
-      const qrUrl = `${process.env.FRONTEND_URL}/user-details/${email}`;
-      const qrCodeDataUrl = await QRCode.toDataURL(qrUrl);
 
-      // Send email with QR code
-      await sendEmailWithAttachment(email, qrCodeDataUrl);
-    }
 
     const tempPassword = "pending_" + Math.random().toString(36).slice(2);
     const salt = await bcrypt.genSalt(10);

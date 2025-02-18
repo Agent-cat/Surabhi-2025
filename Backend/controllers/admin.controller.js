@@ -1,5 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import QRCode from "qrcode";
+import { sendEmailWithAttachment } from "../utils/email.utils.js";
 
 export const getRegistrations = async (req, res) => {
   try {
@@ -38,6 +40,11 @@ export const updateRegistration = async (req, res) => {
           .status(400)
           .json({ error: "No password found in registration data" });
       }
+
+      // Generate and send QR code after approval
+      const qrUrl = `${process.env.FRONTEND_URL}/user-details/${registration.email}`;
+      const qrCodeDataUrl = await QRCode.toDataURL(qrUrl);
+      await sendEmailWithAttachment(registration.email, qrCodeDataUrl);
 
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(plainPassword, salt);

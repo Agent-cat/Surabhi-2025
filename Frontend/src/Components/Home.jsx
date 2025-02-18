@@ -17,22 +17,22 @@ const timelineData = [
 
   {
     year: 2024,
-    title: "New Heights",
-    description: "Introduced new art forms and collaborative performances",
+    title: "A Global Showcase of Talent and Culture",
+    description: "In 2024, the festival saw an astounding 20,000 students from all corners of the world, including a growing number of international participants, making it one of the largest and most inclusive cultural events in India. The sheer scale and global participation reflect the fest’s expanding reach and its significance as a major platform for young talent.",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2024i_b6r9hy.jpg",
   },
   {
     year: 2023,
-    title: "Growing Strong",
+    title: "A Global Celebration of Talent and Culture",
     description:
-      "Expanded to include international participants and professional artists",
+      "In 2023, Surabhi reached new heights with over 15,000 students participating, including a significant number of international students from various countries. This made Surabhi not only one of the largest cultural fests in India but also a truly global celebration of youth, talent, and diversity.",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2023i_dp6r0u.jpg",
   },
   {
     year: 2022,
-    title: "The Beginning",
+    title: "A National Celebration of Talent and Culture",
     description:
-      "First edition of Surabhi with over 1000 participants from across India",
+      "In 2022, Surabhi witnessed a remarkable participation of over 14,000 students, making it one of the largest and most anticipated cultural fests in the country.",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2022i_ihzcmw.jpg",
   },
 ];

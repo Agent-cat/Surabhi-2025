@@ -29,7 +29,7 @@ const Gallery = () => {
     ],
     Chitrakala: [
       {
-        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/bshgb02n2w459tdqwisn"
+        image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/imojqcrvc6zh00bgdgrl"
       },
       {
         image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/zrvhpewod57jo60284xl"
@@ -37,7 +37,9 @@ const Gallery = () => {
       {
         image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/imojqcrvc6zh00bgdgrl"
       },
-      { image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/hctihg9kmp8pau6qzu38 " }
+
+
+
     ],
     Nritya: [
       {

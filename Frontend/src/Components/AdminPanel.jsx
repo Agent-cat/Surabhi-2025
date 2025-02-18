@@ -790,6 +790,42 @@ const AdminPanel = () => {
     });
   };
 
+  const exportRegistrationsToExcel = async (status) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/registrations?status=${status}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch registrations");
+      }
+
+      const registrations = await response.json();
+
+      const exportData = registrations.map((user) => ({
+        "Full Name": user.fullName,
+        Email: user.email,
+        College: user.college,
+        "College ID": user.collegeId,
+        "Payment Status": user.paymentStatus,
+        "UTR ID": user.paymentId || "N/A",
+        "Payment Screenshot": user.paymentScreenshot || "N/A",
+
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(exportData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Registrations");
+
+      const fileName = `registrations_${status}_${new Date().toISOString().split("T")[0]}.xlsx`;
+      XLSX.writeFile(wb, fileName);
+    } catch (error) {
+      console.error("Error exporting registrations:", error);
+    }
+  };
+
   useEffect(() => {
     return () => {
       document.body.style.overflow = "unset";
@@ -862,6 +898,12 @@ const AdminPanel = () => {
                 }`}
             >
               Rejected
+            </button>
+            <button
+              onClick={() => exportRegistrationsToExcel(filter)}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-200"
+            >
+              Export to Excel
             </button>
           </div>
         )}

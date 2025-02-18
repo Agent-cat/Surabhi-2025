@@ -4,6 +4,7 @@ import intro3 from "../assets/intro3.mp4";
 import { useNavigate } from "react-router-dom";
 import { setToken, setUser } from "../utils/auth";
 import ErrorPopup from "./ErrorPopup";
+import GenericPopup from "./GenericPopup";
 
 const Register = () => {
 
@@ -22,6 +23,7 @@ const Register = () => {
     address: "",
     country: "India",
     otherCountryName: "",
+    image: null,
   });
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +32,7 @@ const Register = () => {
   const [showOTPInput, setShowOTPInput] = useState(false);
   const [otp, setOtp] = useState('');
   const [otpError, setOtpError] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   const indianStates = [
     "Andhra Pradesh",
@@ -61,6 +64,8 @@ const Register = () => {
     "Uttarakhand",
     "West Bengal",
   ];
+
+  const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
@@ -163,6 +168,18 @@ const Register = () => {
     }
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > MAX_IMAGE_SIZE) {
+        setError("Image size should not exceed 2MB.");
+        setShowPopup(true);
+        return;
+      }
+      setFormData({ ...formData, image: file });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -220,7 +237,8 @@ const Register = () => {
         navigate("/payment", { state: { formData } });
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.message || "An error occurred during registration.");
+      setShowPopup(true);
     } finally {
       setIsLoading(false);
     }
@@ -229,6 +247,7 @@ const Register = () => {
   return (
     <>
       {error && <ErrorPopup message={error} onClose={() => setError(null)} />}
+      {showPopup && <GenericPopup message={error} onClose={() => setShowPopup(false)} />}
       <div className="min-h-screen relative flex items-center justify-center px-4 py-8">
         {!isVideoLoaded && (
           <div className="absolute inset-0 z-50 flex items-center justify-center bg-black">
@@ -508,6 +527,17 @@ const Register = () => {
               />
             </div>
 
+            <div>
+              <label htmlFor="image" className="block text-white mb-2">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+              />
+            </div>
 
             <button
               type="submit"

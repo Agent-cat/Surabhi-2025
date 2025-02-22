@@ -108,13 +108,17 @@ export const registerForEvent = async (req, res) => {
     for (const cat of allCategories) {
       for (const evt of cat.Events) {
         if (evt.registeredStudents.includes(userId)) {
-          if (evt.details.date === eventDate && evt.details.time === eventTime) {
+          const evtStart = evt.details.startTime;
+          const evtEnd = evt.details.endTime;
+          if (evt.details.date === eventDate &&
+            ((evtStart < event.details.endTime && evtEnd > event.details.startTime))) {
             return res.status(400).json({
               message: "Time conflict: You are already registered for another event at this time",
               conflictingEvent: {
                 title: evt.title,
                 date: evt.details.date,
-                time: evt.details.time
+                startTime: evt.details.startTime,
+                endTime: evt.details.endTime
               }
             });
           }

@@ -96,12 +96,25 @@ const EventModal = React.memo(
               </div>
 
               <div>
-                <label className="block text-purple-300 mb-2">Time</label>
+                <label className="block text-purple-300 mb-2">Start Time</label>
                 <input
                   type="time"
-                  value={eventForm.time}
+                  value={eventForm.startTime}
                   onChange={(e) =>
-                    setEventForm({ ...eventForm, time: e.target.value })
+                    setEventForm({ ...eventForm, startTime: e.target.value })
+                  }
+                  className="w-full bg-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-purple-300 mb-2">End Time</label>
+                <input
+                  type="time"
+                  value={eventForm.endTime}
+                  onChange={(e) =>
+                    setEventForm({ ...eventForm, endTime: e.target.value })
                   }
                   className="w-full bg-gray-700 rounded-lg p-2.5 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   required
@@ -444,7 +457,8 @@ const AdminPanel = () => {
     description: "",
     venue: "",
     date: "",
-    time: "",
+    startTime: "",
+    endTime: "",
     image: "",
     termsandconditions: "",
     participantLimit: "",
@@ -462,7 +476,8 @@ const AdminPanel = () => {
       description: "",
       venue: "",
       date: "",
-      time: "",
+      startTime: "",
+      endTime: "",
       image: "",
       termsandconditions: "",
       participantLimit: "",
@@ -601,7 +616,8 @@ const AdminPanel = () => {
             description: eventForm.description,
             venue: eventForm.venue,
             date: eventForm.date,
-            time: eventForm.time,
+            startTime: eventForm.startTime,
+            endTime: eventForm.endTime,
           },
           image: eventForm.image,
           termsandconditions: eventForm.termsandconditions,
@@ -644,7 +660,8 @@ const AdminPanel = () => {
       description: "",
       venue: "",
       date: "",
-      time: "",
+      startTime: "",
+      endTime: "",
       image: "",
       termsandconditions: "",
       participantLimit: "",
@@ -665,7 +682,8 @@ const AdminPanel = () => {
       description: event.details.description,
       venue: event.details.venue,
       date: event.details.date,
-      time: event.details.time,
+      startTime: event.details.startTime,
+      endTime: event.details.endTime,
       image: event.image,
       termsandconditions: event.termsandconditions,
       participantLimit: event.participantLimit,
@@ -1128,9 +1146,15 @@ const AdminPanel = () => {
                               </p>
                               <p className="text-gray-300">
                                 <span className="font-semibold text-purple-400">
-                                  Time:
+                                  Start Time:
                                 </span>{" "}
-                                {event.details.time}
+                                {event.details.startTime}
+                              </p>
+                              <p className="text-gray-300">
+                                <span className="font-semibold text-purple-400">
+                                  End Time:
+                                </span>{" "}
+                                {event.details.endTime}
                               </p>
                             </div>
                           </div>

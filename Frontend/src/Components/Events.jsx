@@ -249,6 +249,17 @@ const Events = () => {
     </div>
   );
 
+  const renderEventDetails = (event) => (
+    <div>
+      <h3>{event.title}</h3>
+      <p>{event.details.description}</p>
+      <p>Venue: {event.details.venue}</p>
+      <p>Date: {event.details.date}</p>
+      <p>Start Time: {event.details.startTime}</p>
+      <p>End Time: {event.details.endTime}</p>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-black text-white p-8">
       <div className="flex justify-center items-center pt-14">
@@ -281,8 +292,8 @@ const Events = () => {
 
                         <div
                           className={`bg-gray-800 rounded-lg p-4 w-full cursor-pointer transition-all duration-300 transform hover:scale-[1.02] hover:bg-gray-700 ${expandedCategory === `${chartIndex}-${eventIndex}`
-                              ? "ring-2 ring-purple-500"
-                              : ""
+                            ? "ring-2 ring-purple-500"
+                            : ""
                             }`}
                           onClick={() =>
                             handleCategoryClick(chartIndex, eventIndex)
@@ -294,9 +305,9 @@ const Events = () => {
                             </h3>
                             <div
                               className={`transform transition-transform duration-300 ${expandedCategory ===
-                                  `${chartIndex}-${eventIndex}`
-                                  ? "rotate-180"
-                                  : ""
+                                `${chartIndex}-${eventIndex}`
+                                ? "rotate-180"
+                                : ""
                                 }`}
                             >
                               ▼
@@ -305,8 +316,8 @@ const Events = () => {
 
                           <div
                             className={`transition-all duration-500 ease-in-out ${expandedCategory === `${chartIndex}-${eventIndex}`
-                                ? "max-h-[800px] opacity-100 mt-4"
-                                : "max-h-0 opacity-0 overflow-hidden"
+                              ? "max-h-[800px] opacity-100 mt-4"
+                              : "max-h-0 opacity-0 overflow-hidden"
                               }`}
                           >
                             <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -323,48 +334,36 @@ const Events = () => {
                                     {event.title}
                                   </h3>
                                   <div className="text-gray-300">
-                                    <p>{event.details.description}</p>
-                                    <p className="mt-2">
-                                      <span className="font-semibold">Venue:</span>{" "}
-                                      {event.details.venue}
-                                    </p>
-                                    <p>
-                                      <span className="font-semibold">Date:</span>{" "}
-                                      {event.details.date}
-                                    </p>
-                                    <p>
-                                      <span className="font-semibold">Time:</span>{" "}
-                                      {event.details.time}
-                                    </p>
-                                    <p>
-                                      <span className="font-semibold">Participants:</span>{" "}
-                                      {event.registeredStudents.length} / {event.participantLimit}
-                                    </p>
+                                    {renderEventDetails(event)}
                                   </div>
-                                  {event.registeredStudents.includes(
-                                    localStorage.getItem("userId")
-                                  ) ? (
-                                    <button
-                                      onClick={() => handleUnregisterClick(chart._id, event)}
-                                      className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300"
-                                    >
-                                      Unregister
-                                    </button>
-                                  ) : (
-                                    <button
-                                      onClick={() => handleRegisterClick(chart._id, event)}
-                                      className={`px-4 py-2 rounded-md transition duration-300 ${event.registeredStudents.length >= event.participantLimit
-                                          ? "bg-gray-500 cursor-not-allowed"
-                                          : "bg-purple-500 hover:bg-purple-600 text-white"
-                                        }`}
-                                      disabled={event.registeredStudents.length >= event.participantLimit}
-                                    >
-                                      {event.registeredStudents.length >= event.participantLimit
-                                        ? "Event Full"
-                                        : "Register"}
-                                    </button>
-                                  )}
+                                  <p>
+                                    <span className="font-semibold">Participants:</span>{" "}
+                                    {event.registeredStudents.length} / {event.participantLimit}
+                                  </p>
                                 </div>
+                                {event.registeredStudents.includes(
+                                  localStorage.getItem("userId")
+                                ) ? (
+                                  <button
+                                    onClick={() => handleUnregisterClick(chart._id, event)}
+                                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300"
+                                  >
+                                    Unregister
+                                  </button>
+                                ) : (
+                                  <button
+                                    onClick={() => handleRegisterClick(chart._id, event)}
+                                    className={`px-4 py-2 rounded-md transition duration-300 ${event.registeredStudents.length >= event.participantLimit
+                                      ? "bg-gray-500 cursor-not-allowed"
+                                      : "bg-purple-500 hover:bg-purple-600 text-white"
+                                      }`}
+                                    disabled={event.registeredStudents.length >= event.participantLimit}
+                                  >
+                                    {event.registeredStudents.length >= event.participantLimit
+                                      ? "Event Full"
+                                      : "Register"}
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </div>

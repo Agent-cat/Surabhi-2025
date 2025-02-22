@@ -134,17 +134,17 @@ const participationSteps = [
   }
 ];
 
-const g1 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/q2c0ccumfs2iztxhxcmh';
-const g2 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/i7qhjtrikaqcfqgnkyvk';
-const g3 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/jjkoq15gzm93zkygnckw';
-const g4 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/buadaqs3homnlaqpctwe';
-const g5 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/kp3tn5gewnyaabc4gms6';
-const g6 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/ag1jyj78fkw4moqavptl';
-const g7 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/apowslnjwi6db0fmezfq';
-const g8 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/sskhxznpaphul2lyekkm';
-const g9 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/bqcb7hzkflw4v9nhcpfb';
-const g10 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/gsuh21bq4eiveiaklalz';
-const g11 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_auto,q_auto/aulomipj8ukf4cboywbg';
+const g1 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/q2c0ccumfs2iztxhxcmh';
+const g2 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/i7qhjtrikaqcfqgnkyvk';
+const g3 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/jjkoq15gzm93zkygnckw';
+const g4 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/buadaqs3homnlaqpctwe';
+const g5 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/kp3tn5gewnyaabc4gms6';
+const g6 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/ag1jyj78fkw4moqavptl';
+const g7 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/apowslnjwi6db0fmezfq';
+const g8 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/sskhxznpaphul2lyekkm';
+const g9 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/bqcb7hzkflw4v9nhcpfb';
+const g10 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/gsuh21bq4eiveiaklalz';
+const g11 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/aulomipj8ukf4cboywbg';
 
 
 const Home = () => {

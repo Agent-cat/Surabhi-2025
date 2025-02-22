@@ -28,9 +28,15 @@ const eventSchema = new mongoose.Schema({
           type: String,
           required: true,
         },
-        time: {
+        startTime: {
           type: String,
           required: true,
+          default: "09:00"
+        },
+        endTime: {
+          type: String,
+          required: true,
+          default: "17:00"
         },
       },
       registeredStudents: [

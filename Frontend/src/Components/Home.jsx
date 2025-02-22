@@ -64,7 +64,7 @@ const chiefGuests = [
 
 
   {
-    name: "Naveen IAS",
+    name: "Naveen",
     role: "IAS",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379765/g3_ccux51.jpg"
   },
@@ -366,7 +366,7 @@ const Home = () => {
             transition={{ duration: 0.5 }}
             className="text-2xl sm:text-3xl md:text-4xl font-saint-carell font-bold mb-6 md:mb-8 text-center text-white"
           >
-            What about Surabhi
+            About Surabhi
           </motion.h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div

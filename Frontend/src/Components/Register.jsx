@@ -448,7 +448,7 @@ const Register = () => {
                     disabled={isLoading}
                   />
                   <p className="mt-2 text-sm text-white">
-                    Note: Non-KL University students are required to pay ₹500
+                    Note: Non-KL University students are required to pay ₹310
                     registration fee
                   </p>
                 </>

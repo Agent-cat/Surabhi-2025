@@ -56,7 +56,9 @@ export const sendEmailWithAttachment = async (email, qrCodeDataUrl) => {
             to: email,
             subject: 'Your Registration QR Code',
             html: `
-        <p>Thank you for registering. Please find your QR code attached below:</p>
+        <p>Thank you for registering for KL SURABHI. </p> 
+        <h1>Note: Please present this QR code at the gate for entry into the college on March 7 and 8.</h1>
+        <p>Your QR code is attached below </p>
       `,
             attachments: [
                 {

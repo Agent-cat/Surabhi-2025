@@ -315,7 +315,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="w-40 object-contain sm:w-64 md:w-48 z-10"
+                className="w-40 object-contain hidden sm:w-64 md:w-48 z-10"
               />
             </div>
 

@@ -151,11 +151,10 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* Logo moved to left */}
         <Link to="/" className="flex gap-2 items-center">
-          <img src={logo} alt="logo" className="w-10 h-12" />
+
           <div className="flex  gap-2 items-center">
             <div className="flex gap-3 items-center">
-
-              <img src={kl} alt="logo" className="w-32 hidden md:flex h-10" />
+              <img src={kl} alt="logo" className="w-32  md:flex h-10" />
             </div>
 
           </div>
@@ -182,7 +181,7 @@ const Navbar = () => {
 
 
 
-        <div className="flex items-center ml-10 gap-4">
+        <div className="flex items-center  gap-4">
           {/* <img src={kl} alt="logo" className="w-36 hidden md:inline h-12" /> */}
           <div className="hidden lg:block">
             {user ? (

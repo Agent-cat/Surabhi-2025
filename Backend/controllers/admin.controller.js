@@ -41,7 +41,7 @@ export const updateRegistration = async (req, res) => {
           .json({ error: "No password found in registration data" });
       }
 
-      // Generate and send QR code after approval
+
       const qrUrl = `${process.env.FRONTEND_URL}/user-details/${registration.email}`;
       const qrCodeDataUrl = await QRCode.toDataURL(qrUrl);
       await sendEmailWithAttachment(registration.email, qrCodeDataUrl);

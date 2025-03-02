@@ -5,20 +5,27 @@ import { FaYoutube } from "react-icons/fa";
 import { loadSlim } from "tsparticles-slim";
 import Particles from "react-tsparticles";
 import kl from "../assets/kl.png";
-
-
+import proshow from "../assets/PROSHOW.jpg"
 import video from "../assets/intro3.mp4";
 import logo from "../assets/logo.png";
+import partner from "../assets/partner.png";
 
-import partner from "../assets/partner.png"
-
+const Popup = ({ image, onClose }) => {
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+      <div className="relative bg-white rounded-lg ">
+        <button onClick={onClose} className="absolute top-2 right-2 font-bold scale-125 text-xl">✖</button>
+        <img src={proshow} alt="Popup" className="w-96 h-96 rounded-lg" />
+      </div>
+    </div>
+  );
+};
 
 const timelineData = [
-
   {
     year: 2024,
     title: "A Global Showcase of Talent and Culture",
-    description: "In 2024, the festival saw an astounding 20,000 students from all corners of the world, including a growing number of international participants, making it one of the largest and most inclusive cultural events in India. The sheer scale and global participation reflect the fest’s expanding reach and its significance as a major platform for young talent.",
+    description: "In 2024, the festival saw an astounding 20,000 students from all corners of the world, including a growing number of international participants, making it one of the largest and most inclusive cultural events in India. The sheer scale and global participation reflect the fest's expanding reach and its significance as a major platform for young talent.",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2024i_b6r9hy.jpg",
   },
   {
@@ -36,9 +43,6 @@ const timelineData = [
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2022i_ihzcmw.jpg",
   },
 ];
-
-
-
 
 const chiefGuests = [
   {
@@ -61,8 +65,6 @@ const chiefGuests = [
     role: "Actor",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379767/g1_gth4yu.jpg"
   },
-
-
   {
     name: "Naveen",
     role: "IAS",
@@ -78,7 +80,6 @@ const chiefGuests = [
     role: "Actor",
     image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379762/g6_qeve0t.jpg"
   },
-
   {
     name: "Garima Bhardwaj",
     role: "Designer",
@@ -146,9 +147,12 @@ const g9 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/bqcb7h
 const g10 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/gsuh21bq4eiveiaklalz';
 const g11 = 'https://res.cloudinary.com/djr4t6hid/image/upload/f_webp,q_20/aulomipj8ukf4cboywbg';
 
-
 const Home = () => {
+  const [isPopupVisible, setIsPopupVisible] = useState(true);
 
+  const handleClosePopup = () => {
+    setIsPopupVisible(false);
+  };
 
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -280,6 +284,7 @@ const Home = () => {
 
   return (
     <div className="relative w-full">
+      {isPopupVisible && <Popup image={"https://example.com/your-image.jpg"} onClose={handleClosePopup} />}
       <div className="bg-black text-white overflow-x-hidden">
         <Particles
           id="tsparticles"
@@ -401,7 +406,6 @@ const Home = () => {
           </div>
         </div>
 
-
         <div className="py-16 ">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
@@ -417,7 +421,6 @@ const Home = () => {
                   key={step.id}
                   className="relative bg-purple-900/20 rounded-xl p-8 backdrop-blur-sm border border-purple-500/20 group hover:border-purple-500/40 transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_30px_-10px_rgba(196,130,252,0.2)]"
                 >
-
                   <div className="absolute -top-6 left-6 w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center text-2xl font-bold text-white transform -rotate-12 group-hover:rotate-0 transition-transform duration-300 shadow-lg">
                     {step.id}
                   </div>
@@ -457,7 +460,6 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {visibleGuests.map((guest, index) => (
                 <ChiefGuestImage key={index} guest={guest} />
-
               ))}
             </div>
 
@@ -549,13 +551,11 @@ const Home = () => {
               <img src={g9} alt="" className="g1" />
               <img src={g10} alt="" className="g1" />
               <img src={g11} alt="" className="g1" />
-
             </div>
           </div>
         </div>
 
         {/* Our Partners Section */}
-
         <div className="w-full py-12 sm:py-16 px-4">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -567,10 +567,8 @@ const Home = () => {
           <div className="">
             <div className="flex justify-center">
               <img src={partner} alt="" className="g1 h-32 w-80" />
-
             </div>
           </div>
-
         </div>
 
         {/* Map Section */}

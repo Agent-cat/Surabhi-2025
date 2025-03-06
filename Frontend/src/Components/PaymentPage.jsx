@@ -12,6 +12,7 @@ const PaymentPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [paymentImage, setPaymentImage] = useState(null);
   const [showApprovalMessage, setShowApprovalMessage] = useState(false);
+  const [imageError, setImageError] = useState(""); // State for image error message
   const formData = location.state?.formData;
 
   React.useEffect(() => {
@@ -46,6 +47,14 @@ const PaymentPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setImageError(""); // Reset image error message
+
+    // Check if the image size exceeds 2MB (2 * 1024 * 1024 bytes)
+    if (paymentImage && paymentImage.size > 2 * 1024 * 1024) {
+      setImageError("File size exceeds 2MB. Please upload a smaller file.");
+      setIsLoading(false);
+      return;
+    }
 
     try {
       let paymentImageUrl = "";
@@ -184,6 +193,8 @@ const PaymentPage = () => {
               required
               disabled={isLoading}
             />
+            <p className="text-sm text-purple-300 mt-1">Image size should be less than 2MB.</p> {/* Note about image size */}
+            {imageError && <p className="text-red-500 text-sm mt-1">{imageError}</p>} {/* Display error message */}
           </div>
 
           <button

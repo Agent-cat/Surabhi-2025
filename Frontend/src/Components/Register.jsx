@@ -307,6 +307,11 @@ const Register = () => {
                 required
                 disabled={isLoading}
               />
+              <p className="text-sm text-white/80 mt-1">
+                Note:<br />
+                1.Kl university students should use their official university Email <br />
+                2. Other college students should select their college before filling the email address
+              </p>
             </div>
             {!isEmailVerified && (
               <div className="flex items-center gap-2">

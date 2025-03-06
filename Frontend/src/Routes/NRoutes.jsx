@@ -17,6 +17,7 @@ import ForgotPassword from "../Components/ForgotPassword";
 import UserDetails from "../Components/UserDetails";
 import Activities from "../Components/Activities";
 
+
 const NRoutes = () => {
   const user = getUser();
   const isAdmin = user?.role === "admin";
